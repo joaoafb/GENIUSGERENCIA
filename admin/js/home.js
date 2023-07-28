@@ -514,7 +514,7 @@ async function pedidoCod() {
 
 
     try {
-        const response = await fetch(`https://192.168.1.105/api/pedido-postado/${pedidoId}/${cod}`, {
+        const response = await fetch(`https://100.24.182.107/api/pedido-postado/${pedidoId}/${cod}`, {
             method: 'PUT',
         });
 

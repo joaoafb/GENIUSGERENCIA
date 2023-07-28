@@ -1061,30 +1061,3 @@ function enviarNotificacao(titulo, mensagem) {
         timeout: 5000, // Tempo em milissegundos até a notificação ser automaticamente fechada (5 segundos neste exemplo)
     });
 }
-
-// Função para obter o valor do parâmetro 'id' da URL
-function getParameterByName(name, url) {
-    if (!url) url = req.url;
-    name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
-
-app.get('/home', (req, res) => {
-    // Obter o valor do parâmetro 'id' da URL
-    var idValue = getParameterByName('id', req.url);
-
-    // Exibir o resultado no console do servidor
-    if (idValue) {
-        console.log('ID: ' + idValue);
-        // Aqui você pode fazer o que quiser com o valor do ID.
-        // Por exemplo, pode usar AJAX para carregar dados relacionados a esse ID.
-    } else {
-        console.log('O parâmetro "?id=" não foi encontrado na URL.');
-    }
-
-    res.send('Verifique o console do servidor para ver o valor do parâmetro "id".');
-});
