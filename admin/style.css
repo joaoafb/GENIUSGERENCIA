@@ -1,0 +1,276 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+* {
+    transition: .2s ease-in-out !important;
+}
+
+body {
+    padding-top: 4.5rem;
+    font-family: "Libre Franklin", sans-serif !important;
+    margin-bottom: 4.5rem;
+    user-select: none !important;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid #212529 !important;
+}
+
+.btn-primary {
+    background-color: black !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+nav {
+    padding-left: 20px !important;
+}
+
+.nav-link:hover {
+    transition: all 0.4s;
+}
+
+.nav-link-collapse:after {
+    float: right;
+    content: '\f067';
+    font-family: 'FontAwesome';
+}
+
+.nav-link-show:after {
+    float: right;
+    content: '\f068';
+    font-family: 'FontAwesome';
+}
+
+.nav-item ul.nav-second-level {
+    padding-left: 0;
+}
+
+.nav-item ul.nav-second-level>.nav-item {
+    padding-left: 20px;
+}
+
+.item-menu {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 10px;
+    transition: .2s ease-in-out;
+}
+
+.item-menu:hover {
+    transform: scale(0.95);
+    transition: .2s ease-in-out;
+}
+
+.item-menu i {
+    transform: scale(3);
+    color: #343a40;
+}
+
+.menuhorizontal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 70vh;
+}
+
+.divImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divImg img {
+    margin: 0 auto;
+}
+
+.cardbox {
+    border-radius: 5px;
+    border: 1px solid #2125292f;
+    width: 250px;
+    margin: 5px;
+    padding: 10px;
+    height: 100px;
+}
+
+#select {
+    border: 1px solid #21252945;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.content-wrapper {
+    width: 80%;
+    padding: 10px;
+    margin-top: -12px;
+    margin-left: 250px !important;
+    margin-right: 10px;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.btndetalhes {
+    margin: 0;
+    margin-bottom: 20px !important;
+    padding: 0;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    background-color: black;
+    font-size: 10pt;
+    border-radius: 10px;
+    height: 40px !important;
+    width: 70px;
+}
+
+.modal-body img {
+    width: 100px;
+    border-radius: 10px;
+}
+
+input {
+    height: 40px !important;
+}
+
+input:focus {
+    border: none !important;
+    outline: none !important;
+}
+
+.input {
+    height: 40px;
+    outline: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btnoption {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.btnoption:hover {
+    color: gray;
+}
+
+th,
+td {
+    border-radius: 5px !important;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr button {
+    margin-top: 20px !important;
+}
+
+.divInput {
+    display: flex;
+    flex-direction: row;
+}
+
+.divInput input {
+    width: 90%;
+    height: 40px;
+}
+
+tr {
+    margin-bottom: 10px;
+}
+
+#navAccordion {
+    margin: 10px !important;
+    margin-top: 60px !important;
+    border: 1px solid #343a4010;
+    height: auto !important;
+    padding: 10px !important;
+    text-decoration: none !important;
+    list-style-type: none !important;
+    background-color: transparent;
+    color: black !important;
+    border-radius: 5px;
+}
+
+ul.navbar-nav li.nav-item a.nav-link span {
+    margin-left: 5px;
+}
+
+ul.navbar-nav li.nav-item a.nav-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    color: black;
+    transition: .2s ease-in-out;
+}
+
+ul.navbar-nav li.nav-item:active a.nav-link {
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    transition: .2s ease-in-out;
+}
+
+ul.navbar-nav li.nav-item:hover a.nav-link {
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    transition: .2s ease-in-out;
+}
+
+.divInput button {
+    height: 40px;
+    margin-left: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+@media (min-width: 992px) {
+    .sidenav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 230px;
+        height: calc(100vh - 3.5rem);
+        margin-top: 3.5rem;
+        background: #343a40;
+        box-sizing: border-box;
+        border-top: 1px solid rgba(0, 0, 0, 0.3);
+    }
+    .navbar-expand-lg .sidenav {
+        flex-direction: column;
+    }
+    .content-wrapper {
+        margin-left: 230px;
+    }
+    .footer {
+        width: calc(100% - 230px);
+        margin-left: 230px;
+    }
+}

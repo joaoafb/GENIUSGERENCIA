@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel | Genius Leap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="./prestyle.css">
+    <script src="https://kit.fontawesome.com/2c2c0ee88e.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;800&amp;display=swap">
+    <link rel="shortcut icon" href="./1.png" type="image/x-icon">
+    <!-- Moment.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+
+
+</head>
+
+<body onload="home()">
+    <!--MODAL PRODUTO-->
+    <div class="modal fade" id="ModalProduto" tabindex="-1" role="dialog" aria-labelledby="meuModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <!-- Conteúdo do modal aqui -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="TituloProduto">Produto</h5>
+
+                </div>
+                <div class="modal-body">
+                    <!-- Conteúdo do corpo do modal aqui -->
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick='$("#ModalProduto").modal("hide");' class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" id="btnSalvar" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--MODAL PEDIDO-->
+    <div class="modal fade" id="ModalPedido" tabindex="-1" role="dialog" aria-labelledby="meuModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable modal-fullscreen-xl-down" role="document">
+            <div class="modal-content">
+                <!-- Conteúdo do modal aqui -->
+                <div class="modal-header">
+                    <h5 class="modal-title " id="TituloProduct">Produto</h5>
+
+                </div>
+                <div class="modal-body">
+                    <div class="container mt-5">
+                        <div class="row">
+                            <div class="col-md-8" id="listapedidos">
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <br>
+                                    <div class="card-body">
+
+                                        <div class="mb-3">
+                                            <label for="nomeCompleto" class="form-label">Valor Total:</label>
+                                            <input autocomplete="off" disabled type="text" class="form-control" id="price" required>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div><br>
+                                <!-- Dados do Cliente -->
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Dados do Cliente</h5>
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                                                <input autocomplete="off" disabled type="text" class="form-control" id="nomeCompleto" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="cpf" class="form-label">CPF</label>
+                                                <input autocomplete="off" disabled type="text" class="form-control" id="cpf" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="telefone" class="form-label">Telefone</label>
+                                                <input autocomplete="off" disabled type="text" class="form-control" id="telefone" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input autocomplete="off" disabled type="email" class="form-control" id="email" required>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- Endereço de Entrega -->
+                                <div class="card mt-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Endereço de Entrega</h5>
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="endereco" class="form-label">Endereço</label>
+                                                <textarea autocomplete="off" cols="60" disabled type="text" class="form-control" id="endereco" required></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="dataHoraPedido" class="form-label">Data e Horário do Pedido</label>
+                                                <input autocomplete="off" disabled type="text" class="form-control" id="dataHoraPedido" required>
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                                <!--  -->
+                                <div class="card mt-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Postagem</h5>
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="endereco" class="form-label">Código de Rastreio</label>
+                                                <textarea autocomplete="off" cols="30" disabled type="text" class="form-control" id="codRast" required></textarea>
+                                            </div>
+
+
+                                        </form>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" onclick='$("#ModalPedido").modal("hide");' class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" id="btnPedidoCancelado" onclick="cancelarPedido()" class="btn btn-danger">Cancelar Pedido</button>
+                    <button type="button" id="btnPedidoFinalizado" onclick="pedidoFinalizado()" class="btn btn-primary">Pedido Finalizado</button>
+
+                    <button type="button" id="btnCompraAprovada" onclick="compraAprovada()" class="btn btn-success">Compra Aprovada</button>
+                    <button type="button" id="btnPedidoPostado" onclick='$("#ModalPostado").modal("show");$("#ModalPedido").modal("hide");' class="btn btn-warning">Pedido Postado</button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--MODAL PEDIDO POSTADO-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="ModalPostado" tabindex="-1" role="dialog" aria-labelledby="meuModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="meuModalLabel">Pedido Postado</h5>
+
+                </div>
+                <div class="modal-body">
+                    <!-- Inputs dentro do modal -->
+                    <div class="form-group">
+                        <label for="input1">ID Pedido:</label>
+                        <input type="text" disabled class="form-control" id="input1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input2">Código de Rastreio:</label>
+                        <input type="text" class="form-control" id="input2">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick='$("#ModalPostado").modal("hide");' class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" onclick="pedidoPostado()">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--FIM MODAL PEDIDO POSTADO-->
+    <div class="modal fade" id="ModalDetalhes" tabindex="-1" role="dialog" aria-labelledby="meuModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <!-- Conteúdo do modal aqui -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="meuModalLabel">Cliente</h5>
+
+                </div>
+                <div class="modal-body">
+                    <div class="container mt-4">
+
+                        <form>
+                            <!-- Dados Pessoais -->
+                            <div class="form-group">
+                                <label for="nome">Nome Completo</label>
+                                <input autocomplete="off" type="text" class="form-control" id="nome" placeholder="Digite seu nome">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input autocomplete="off" type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input autocomplete="off" type="tel" class="form-control" id="telefone" placeholder="Digite seu telefone">
+                            </div>
+
+                            <!-- Endereço -->
+                            <div class="form-group">
+                                <label for="logradouro">Logradouro</label>
+                                <input autocomplete="off" type="text" class="form-control" id="logradouro" placeholder="Digite seu logradouro">
+                            </div>
+                            <div class="form-group">
+                                <label for="numero">Número</label>
+                                <input autocomplete="off" type="text" class="form-control" id="numero" placeholder="Digite o número">
+                            </div>
+                            <div class="form-group">
+                                <label for="bairro">Bairro</label>
+                                <input autocomplete="off" type="text" class="form-control" id="bairro" placeholder="Digite seu bairro">
+                            </div>
+                            <div class="form-group">
+                                <label for="cidade">Cidade</label>
+                                <input autocomplete="off" type="text" class="form-control" id="cidade" place holder="Digite sua cidade">
+                            </div>
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <input autocomplete="off" type="text" class="form-control" id="estado" placeholder="Digite seu estado">
+                            </div>
+                            <div class="form-group">
+                                <label for="cep">CEP</label>
+                                <input autocomplete="off" type="text" class="form-control" id="cep" placeholder="Digite seu CEP">
+                            </div>
+
+                            <!-- Botão de envio -->
+
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick='$("#ModalDetalhes").modal("hide");' class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" id="btnApagarCliente" class="btn btn-danger">Excluir</button>
+
+                    <button type="button" id="btnEditarDados" class="btn btn-primary">Editar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#" id="title-loja"></a>
+
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto sidenav" id="navAccordion">
+                <li class="nav-item active" onclick="pagehome()">
+                    <a class="nav-link" href="#">Home<span class="badge text-bg-secondary" id="count-alert">0</span></a>
+                </li>
+                <li class="nav-item" onclick="pedidos()">
+                    <a class="nav-link" href="#">Pedidos <span class="badge text-bg-secondary" id="count-pedidos">0</span></a>
+                </li>
+                <li class="nav-item" onclick="produtos()">
+                    <a class="nav-link" href="#">Produtos</a>
+                </li>
+
+                <li class="nav-item" onclick="categorias()">
+                    <a class="nav-link" href="#">Categorias</a>
+                </li>
+                <li class="nav-item" onclick="clientes()">
+                    <a class="nav-link" href="#">Clientes</a>
+                </li>
+                <li onclick="logout()" class="nav-item">
+                    <a class="nav-link" href="#">
+                        Deslogar
+                    </a>
+                </li>
+
+
+
+
+            </ul>
+
+        </div>
+    </nav>
+
+    <main class="content-wrapper">
+        <div class="container-fluid">
+
+        </div>
+    </main>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="./js/home.js"></script>
+    <script src="./js/page.js"></script>
+</body>
+
+</html>
